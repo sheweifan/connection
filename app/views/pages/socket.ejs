@@ -1,0 +1,40 @@
+<%- include('../layout_header') %>
+<input type="text" id="name" placeholder="请输入名称" />
+<input id="input" type="text" placeholder="请输入内容" />
+<button type="button" id="send">发送</button>
+<ul id="output"></ul>
+<%- include('../layout_scripts') %>
+<script type="text/javascript" src="/scripts/socket.io.js"></script>
+<script type="text/javascript">
+  var socket = io();
+  var $name = $('#name');
+  var $input = $('#input');
+  var $send = $('#send');
+  var $output = $('#output');
+
+  socket.on('news', function (data) {
+    console.log(data);
+
+  });
+  socket.on('take', function (data) {
+    console.log('take',data)
+    $output.append('<li>'+ data.name + '说：' + data.mes +'</li>')
+  });
+  $send.on('click',function(){
+    var _name = $name.val();
+    if(!_name){
+      alert('请输入名称')
+      return ;
+    }
+    var _val = $input.val();
+    if(!_val){
+      alert('请输入内容')
+      return ;
+    }
+    $output.append('<li>'+ _name + '说：' + _val +'</li>')
+    socket.emit('send', { mes: _val,name: _name });
+  })
+
+</script>
+
+<%- include('../layout_footer') %>

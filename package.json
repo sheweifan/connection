@@ -1,0 +1,21 @@
+{
+  "name": "connection",
+  "version": "1.0.0",
+  "author": "bae",
+  "description": "The first bae nodejs app!",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "koa-bodyparser": "^4.2.0",
+    "koa-ejs": "^4.1.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa-views": "^6.0.2",
+    "moment": "^2.18.1",
+    "sha1": "^1.1.1",
+    "socket.io": "^2.0.3",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {}
+}
